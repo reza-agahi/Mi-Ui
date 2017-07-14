@@ -1,53 +1,69 @@
-var adultCtx = document.getElementById("adult").getContext('2d');
-data = {
-  datasets: [{
-    data: [10, 20],
-    backgroundColor: [
-      'rgb(235, 123, 230)',
-      'rgb(74, 186, 146)'
-    ],
-    hoverBackgroundColor: [
-      'rgb(196, 73, 191)',
-      'rgb(29, 159, 113)'
-    ]
-  }],
+$(document).ready(function() {
+  var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://localhost:3000/data",
+    "method": "GET",
+    "headers": {
+      "cache-control": "no-cache",
+    }
+  }
 
-  // These labels appear in the legend and in the tooltips when hovering different arcs
-  labels: [
-    'In',
-    'Out'
-  ],
+  $.ajax(settings).done(function (response) {
+    var adultCtx = document.getElementById("adult").getContext('2d');
+    data = {
+      datasets: [{
+        data: [response.adultIn, response.adultOut],
+        backgroundColor: [
+          'rgb(235, 123, 230)',
+          'rgb(74, 186, 146)'
+        ],
+        hoverBackgroundColor: [
+          'rgb(196, 73, 191)',
+          'rgb(29, 159, 113)'
+        ]
+      }],
 
-};
-var myDoughnutChart = new Chart(adultCtx, {
-  type: 'doughnut',
-  data: data,
-  options: Chart.defaults.doughnut
-});
+      // These labels appear in the legend and in the tooltips when hovering different arcs
+      labels: [
+        'In',
+        'Out'
+      ],
 
-var youthCtx = document.getElementById("youth").getContext('2d');
-data = {
-  datasets: [{
-    data: [10, 20],
-    backgroundColor: [
-      'rgb(235, 123, 230)',
-      'rgb(74, 186, 146)'
-    ],
-    hoverBackgroundColor: [
-      'rgb(196, 73, 191)',
-      'rgb(29, 159, 113)'
-    ]
-  }],
+    };
+    var myDoughnutChart = new Chart(adultCtx, {
+      type: 'doughnut',
+      data: data,
+      options: Chart.defaults.doughnut
+    });
 
-  // These labels appear in the legend and in the tooltips when hovering different arcs
-  labels: [
-    'In',
-    'Out'
-  ],
+    var youthCtx = document.getElementById("youth").getContext('2d');
+    data = {
+      datasets: [{
+        data: [response.youthIn, response.youthOut],
+        backgroundColor: [
+          'rgb(235, 123, 230)',
+          'rgb(74, 186, 146)'
+        ],
+        hoverBackgroundColor: [
+          'rgb(196, 73, 191)',
+          'rgb(29, 159, 113)'
+        ]
+      }],
 
-};
-var myDoughnutChart = new Chart(youthCtx, {
-  type: 'doughnut',
-  data: data,
-  options: Chart.defaults.doughnut
+      // These labels appear in the legend and in the tooltips when hovering different arcs
+      labels: [
+        'In',
+        'Out'
+      ],
+
+    };
+    var myDoughnutChart = new Chart(youthCtx, {
+      type: 'doughnut',
+      data: data,
+      options: Chart.defaults.doughnut
+    });
+  });
+
+
 });
