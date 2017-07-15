@@ -19,10 +19,10 @@ router.get('/data', function(req, res, next) {
     var youthIn = 0;
     var youthOut = 0;
     for (var i = 0; i < results.length; i++) {
-        adultIn = (results[i].adultYouth && results[i].inOut) ? adultIn + 1 : adultIn;
-        adultOut = (results[i].adultYouth && !results[i].inOut) ? adultOut + 1 : adultOut;
-        youthIn = (!results[i].adultYouth && results[i].inOut) ? youthIn + 1 : youthIn;
-        youthOut = (!results[i].adultYouth && !results[i].inOut) ? youthOut + 1 : youthOut;
+        adultIn = (results[i].adultChild && results[i].inOut) ? adultIn + 1 : adultIn;
+        adultOut = (results[i].adultChild && !results[i].inOut) ? adultOut + 1 : adultOut;
+        youthIn = (!results[i].adultChild && results[i].inOut) ? youthIn + 1 : youthIn;
+        youthOut = (!results[i].adultChild && !results[i].inOut) ? youthOut + 1 : youthOut;
     }
     output.adultIn = adultIn;
     output.adultOut = adultOut;

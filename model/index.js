@@ -8,14 +8,16 @@ const sequelize = new Sequelize('sqlite:database.sqlite', {
 
 const Pedestrian = sequelize.define('pedestrian', {
   inOut: Sequelize.BOOLEAN,
-  adultYouth: Sequelize.BOOLEAN,
+  adultChild: Sequelize.BOOLEAN,
+  imageUrl: Sequelize.STRING,
   datetime: Sequelize.DATE
 });
 
 sequelize.sync()
 .then(() => Pedestrian.create({
-  inOut: true,
-  adultYouth: false,
+  inOut: false,
+  adultChild: true,
+  imageUrl: '1.jpg',
   datetime: new Date(1980, 6, 20)
 }))
 .then(jane => {
