@@ -4,7 +4,20 @@ const Pedestrian = require('../model');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'People Counting Dashboard' });
+  Pedestrian.findAll()
+  .then(function(results) {
+    const rows = [];
+    for (var i = 0; i < results.length; i++) {
+      const rowObject = {};
+      rowObject.index = i;
+      rowObject.image = results[i].imageUrl;
+      rowObject.inOut = results[i].inOut == 0 ? 'ورود' : 'خروج';
+      rowObject.adultChild = results[i].adultChild == 0 ? 'بزرگسال' : 'کودک';
+      rowObject.createdAt = results[i].createdAt;
+      rows.push(rowObject);
+    }
+    res.render('index', { rows: rows });
+  });
 });
 
 /* GET home page. */

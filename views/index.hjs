@@ -14,47 +14,61 @@
   </head>
   <body>
 
+    <header class="header">
+      <span class="header-title">نرم افزار امنیت پیرامونی طرح مهر</h1>
+    </header>
+    <br><br>
+
     <div class="container-fluid">
-      <div class="row">
-        <div class="col-sm-12 main">
-          <div class="row placeholders">
-            <div class="col-xs-12 col-sm-6 placeholder chart-container">
+      <div class="col-sm-12 main">
+        <div class="row placeholders">
+          <h3 class="sub-header">چارت اطلاعات</h3>
+          <div class="col-xs-12 col-sm-6 placeholder chart-container">
+            <div class="thumbnail">
               <canvas id="adult" width="400" height="400"></canvas>
-              <h4>بزرگسال</h4>
+              <div class="caption">
+                <h4 class="card-title">بزرگسال</h4>
+              </div>
             </div>
-            <div class="col-xs-12 col-sm-6 placeholder chart-container">
-              <canvas id="youth" width="400" height="400"></canvas>
-              <h4>کودک</h4>
+          </div>
+          <div class="col-xs-12 col-sm-6 placeholder chart-container">
+            <div class="thumbnail">
+            <canvas id="youth" width="400" height="400"></canvas>
+              <div class="caption">
+                <h4 class="card-title">کودک</h4>
+              </div>
             </div>
           </div>
 
-          <h2 class="sub-header">Section title</h2>
+          <h3 class="sub-header">پایگاه تصاویر</h3>
+          <div id="gallery" style="display:none; margin: auto; width: 80%;">
+            {{#rows}}
+            <img src="{{ image }}" data-image="{{ image }}">
+            {{/rows}}
+          </div>
+
+          <br><br>
+
+          <h3 class="sub-header">پایگاه داده امنیت پیرامونی</h3>
           <div class="table-responsive">
             <table class="table table-striped">
               <thead>
                 <tr>
-                  <th>#</th>
-                  <th>Header</th>
-                  <th>Header</th>
-                  <th>Header</th>
-                  <th>Header</th>
+                  <th class="center">زمان ثبت</th>
+                  <th class="center">دسته</th>
+                  <th class="center">ورود/خروج</th>
+                  <th class="center">شماره</th>
                 </tr>
               </thead>
               <tbody>
+                {{#rows}}
                 <tr>
-                  <td>1,001</td>
-                  <td>Lorem</td>
-                  <td>ipsum</td>
-                  <td>dolor</td>
-                  <td>sit</td>
+                  <td class="center">{{ createdAt }}</td>
+                  <td class="center">{{ adultChild }}</td>
+                  <td class="center">{{ inOut }}</td>
+                  <td class="center">{{ index }}</td>
                 </tr>
-                <tr>
-                  <td>1,002</td>
-                  <td>amet</td>
-                  <td>consectetur</td>
-                  <td>adipiscing</td>
-                  <td>elit</td>
-                </tr>
+                {{/rows}}
               </tbody>
             </table>
           </div>
@@ -62,20 +76,13 @@
       </div>
     </div>
 
-    <div id="gallery" style="display:none; margin: auto; width: 80%;">
-
-      <img alt="Image 1 Title" src="/images/1.jpg"
-        data-image="/images/1.jpg">
-
-      <img alt="Image 2 Title" src="/images/2.jpg"
-        data-image="/images/2.jpg">
-
-    </div>
 
     <script type="text/javascript">
 
 			jQuery(document).ready(function(){
-				jQuery("#gallery").unitegallery();
+				jQuery("#gallery").unitegallery({
+          slider_scale_mode: "fit",
+        });
 			});
 
 		</script>

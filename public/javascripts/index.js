@@ -15,19 +15,19 @@ $(document).ready(function() {
       datasets: [{
         data: [response.adultIn, response.adultOut],
         backgroundColor: [
-          'rgb(235, 123, 230)',
-          'rgb(74, 186, 146)'
+          '#ff9800',
+          '#2196F3',
         ],
         hoverBackgroundColor: [
-          'rgb(196, 73, 191)',
-          'rgb(29, 159, 113)'
+          '#be770f',
+          '#1267ab',
         ]
       }],
 
       // These labels appear in the legend and in the tooltips when hovering different arcs
       labels: [
-        'In',
-        'Out'
+        'ورود',
+        'خروج'
       ],
 
     };
@@ -42,19 +42,19 @@ $(document).ready(function() {
       datasets: [{
         data: [response.youthIn, response.youthOut],
         backgroundColor: [
-          'rgb(235, 123, 230)',
-          'rgb(74, 186, 146)'
+          '#ff9800',
+          '#2196F3',
         ],
         hoverBackgroundColor: [
-          'rgb(196, 73, 191)',
-          'rgb(29, 159, 113)'
+          '#be770f',
+          '#1267ab',
         ]
       }],
 
       // These labels appear in the legend and in the tooltips when hovering different arcs
       labels: [
-        'In',
-        'Out'
+        'ورود',
+        'خروج'
       ],
 
     };

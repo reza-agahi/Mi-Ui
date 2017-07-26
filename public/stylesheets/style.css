@@ -2,9 +2,14 @@
  * Base structure
  */
 
+@font-face {
+  font-family: iransans;
+  src: url('IRANSansWeb_Medium.woff2');
+}
+
 /* Move down content because we have a fixed navbar that is 50px tall */
 body {
-  padding-top: 50px;
+  font-family: iransans;
 }
 
 
@@ -40,6 +45,24 @@ body {
 }
 .main .page-header {
   margin-top: 0;
+}
+
+.center {
+  text-align: center;
+  vertical-align:middle;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  height: 100px;
+  background-color: cyan;
+}
+
+.header-title {
+  font-size: 28px;
+  font-weight: bold;
+  margin: auto;
 }
 
 
